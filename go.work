@@ -1,3 +1,8 @@
 go 1.19
 
-use ./hello_world
+use (
+	./arrays_slices
+	./hello_world
+	./integers
+	./repetition
+)
