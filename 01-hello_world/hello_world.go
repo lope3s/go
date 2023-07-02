@@ -17,7 +17,6 @@ const (
 // This is the full form of a variable declaration
 var targetLanguage string = "English"
 
-
 func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
