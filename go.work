@@ -4,5 +4,6 @@ use (
 	./01-hello_world
 	./02-integers
 	./03-repetition
-    ./04-arrays_slices
+	./04-arrays_slices
+	./05-structs_methods_interfaces
 )
