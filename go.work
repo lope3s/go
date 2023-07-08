@@ -1,9 +1,11 @@
 go 1.19
 
 use (
+	./00-practing-projects/dice_rolling_simulator
 	./01-hello_world
 	./02-integers
 	./03-repetition
 	./04-arrays_slices
 	./05-structs_methods_interfaces
+	./06-pointers_and_errors
 )

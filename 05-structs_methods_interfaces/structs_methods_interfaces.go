@@ -25,13 +25,20 @@ type Rectangle struct {
 	Height float64
 }
 
-// It is a convention in Go to have the receiver variable be the first letter of the type.
-// Syntax: func (receiverName ReceiverType) MethodName(args)
-// When your method is called on a variable of that type, you get your reference to its data
-// via the receiverName variable. In other languages this is done implicity and you access the receiver via this.
+// Methods:
+// A method is a function with a receiver. A method declaration binds an
+// identifier, the method name, to a method, and associates the method
+// with the receiver's base type.
+// Methods are called by invoking them on an instance of a particular type.
+
 func (r Rectangle) Area() float64 {
 	return r.Width * r.Height
 }
+
+// Syntax: func (receiverName ReceiverType) MethodName(args)
+// It is a convention in Go to have the receiver variable be the first letter of the type.
+// When your method is called on a variable of that type, you get your reference to its data
+// via the receiverName variable. In other languages this is done implicity and you access the receiver via this.
 
 type Circle struct {
 	Radius float64
@@ -50,17 +57,10 @@ func (t Triangle) Area() float64 {
     return (t.Base * t.Height) * 0.5
 }
 
-
-//Methods:
-//A method is a function with a receiver. A method declaration binds an
-//identifier, the method name, to a method, and associates the method
-//with the receiver's base type.
-//Methods are called by invoking them on an instance of a particular type.
-
-//Interfaces:
-//are a very powerful concept in statically typed languages like Go because
-//they allow you to make functions that can be used with different types and
-//create highly-decoupled code whilst still maintaining type-safety.
+// Interfaces:
+// are a very powerful concept in statically typed languages like Go because
+// they allow you to make functions that can be used with different types and
+// create highly-decoupled code whilst still maintaining type-safety.
 
 type Shape interface {
 	Area() float64
