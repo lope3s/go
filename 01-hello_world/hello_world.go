@@ -48,7 +48,7 @@ func main() {
 	// We don't provide a type, but we must provide a initialization value;
 	// This cannot be used outside functions bodies or if, for or switch initializers;
 
-	// Unlike regurar variable declarations, a sort variable declaration may redeclare variables provided earlier in the same block
+	// Unlike regurar variable declarations, a short variable declaration may redeclare variables provided earlier in the same block
 	// (or the parameters lists if the block is the function body) with the same type, and at least one of the non-blank variables is new.
 	// As a consequence, redeclaration can only appear in a multi-variable short declaration.
 	// The non-blank variable names on the left side of := must be unique.

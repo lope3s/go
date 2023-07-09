@@ -11,6 +11,10 @@ type Bitcoin int
 // This is very useful when you want to add some domain specific
 // functionality on top of existing types.
 
+// This is not really necessary, but i let it here to remember that
+// any value that implements a String method will fall withing the
+// Stringer interface which is used internally to define the "native"
+// format for that value.
 type Stringer interface {
     String() string
 }
