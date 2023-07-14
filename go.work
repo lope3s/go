@@ -8,4 +8,5 @@ use (
 	./04-arrays_slices
 	./05-structs_methods_interfaces
 	./06-pointers_and_errors
+    ./07-more_about_slices/
 )
