@@ -10,9 +10,13 @@ func main() {
 
 	array := [6]int{1, 2, 3, 4, 5, 6}
     fmt.Printf("array: %v\n", array)
+    fmt.Printf("As in C, array elements in Go are stored sequentially in memomry.\n")
+    fmt.Printf("You can create an array as: [...]int{1, 2, 3} -> the compiler will count the elements for you.\n")
+    fmt.Printf("In Go, arrays are values, they're not pointer to the first array element like C.\n\n")
 
     slice := array[3:6]
-    fmt.Printf("slice := array[3:6], slice: %v\n\n", slice)
+    fmt.Printf("slice := array[3:6], slice: %v\n", slice)
+    fmt.Printf("Slices cannot be re-sliced below zero to access earlier elements in the array.\n\n")
 
     fmt.Println("A slice has both a length and a capacity.")
     fmt.Println("The capacity of the slice is the number of elements in the underlying array, counting from the first element in the slice.")
@@ -30,6 +34,8 @@ func main() {
     fmt.Printf("Whait, what?\n\n")
 
 	fmt.Printf("Slices doesn't store any data, it just describes a section of an underlying array.\n\n")
+    fmt.Printf("slice := array[0:2] -> here slice[0] points to array[0].\n")
+    fmt.Printf("slice := array[2:3] -> here slice[0] points to array[2].\n\n")
 
 	rootSlice := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	fmt.Printf("rootSlice: %v\n", rootSlice) // [1 2 3 4 5 6 7 8 9 10]
@@ -54,7 +60,6 @@ func main() {
 	fmt.Printf("siblingSlice (this slice has a reference to the same array as slice): %v\n\n", siblingSlice) // [1 2 3]
 
 	slice[0] = 0
-    // this indexing reffer to the slice 0 index, in this case it corresponds to the index 3 from the array.
     fmt.Printf("slice[0] = 0\n\n")
 
     fmt.Printf("array: %v\n\n", array) // [0 2 3 4 5 6]
@@ -88,6 +93,7 @@ func main() {
     makeSlice := make([]int, 0, 10)
     fmt.Printf("makeSlice := make([]int, 0, 10) == %v\n\n", makeSlice) // []
     fmt.Printf("where 0 == len(slice) and 10 == cap(slice)\n\n")
+    fmt.Printf("When the capacity is omitted, it default to the specified lenght.\n")
 
     fmt.Printf("%s\n\n", strings.Repeat("-", 80))
 
@@ -95,8 +101,32 @@ func main() {
     makeSlice = append(makeSlice, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
     fmt.Printf("makeSlice = append(makeSlice, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20): %v\n\n", makeSlice)
 	fmt.Printf("append return a new slice containing all the elements of the original slice plus the provided values.\n")
-	fmt.Printf("If the backing array of s is too small, a bigger array will be allocated.\n\n")
+	fmt.Printf("If the backing array of s is too small, a bigger array will be allocated.\n")
+    fmt.Printf("To append one slice to another, use ... to expand the second argument to a list of arguments.\n\n")
 
     fmt.Printf("makeSlice capacity: %d\n", cap(makeSlice))
     fmt.Printf("makeSlice length: %d\n", len(makeSlice))
+    fmt.Printf("%s\n\n", strings.Repeat("-", 80))
+
+    fmt.Printf("You can use the copy() fn to replicate the contents of a slice into another:\n\n")
+
+    originalSlice := []int{0, 0, 0}
+
+    filledSlice := []int{1, 2, 3}
+
+    fmt.Printf("originalSlice := []int{0, 0, 0}: %v\n", originalSlice)
+    fmt.Printf("filledSlice := []int{1, 2, 3}: %v\n\n", filledSlice)
+
+    copy(originalSlice, filledSlice)
+
+    fmt.Printf("copy(originalSlice, filledSlice), originalSlice: %v\n", originalSlice)
+    fmt.Printf("%s\n\n", strings.Repeat("-", 80))
+
+    fmt.Printf("Re-slicing a slice doesn't make a copy of the underlying array.\n\n")
+    fmt.Printf("Imagine that you want to read a line from a file and store it in a slice.\n")
+    fmt.Printf("Since the slice references the original array, as long as the slice is kept around the garbage\n")
+    fmt.Printf("collector can't release the array. The few useful bytes of the file keep the entire content in memory.\n")
+    fmt.Printf("The full array will be kept in memory until it's no longer referenced.\n")
+    fmt.Printf("Occasionally this can cause the program to hold all the data in memory when only a small piece of it is needed.\n\n")
+    fmt.Printf("To fix this problem one can copy the interesting data to a new slice with make and return it.\n")
 }
