@@ -5,6 +5,17 @@ import (
 	"fmt"
 )
 
+// A pointer is a variable that stores the memory address of another variable.
+// The * sintax defines a pointer:
+// var p *int
+// The & operator generates a pointer to its operand
+// myInt := 1
+// p = &myInt
+
+// Go doesn't have pointer arithmetic
+
+// Trying to deference a nil pointer will cause a runtime error (panic)
+
 // Here you are creating your own type from an existing one;
 type Bitcoin int
 

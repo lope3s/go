@@ -1,3 +1,3 @@
-module maps
+module mapz
 
 go 1.19

@@ -79,7 +79,11 @@ func main() {
     fmt.Printf("A nil slice has a length and capacity of 0 and has no underlying array.\n\n")
 	var emptySlice []int
     fmt.Printf("var emptySlice []int\n\n")
-	fmt.Printf("emptySlice == nil: %t\n\n", emptySlice == nil) // nil
+    fmt.Printf("emptySlice == nil: %t\n\n", emptySlice == nil) // nil
+
+    emptySlice2 := []int{}
+    fmt.Printf("emptySlice2 := []int{}\n\n")
+	fmt.Printf("emptySlice2 == nil: %t\n\n", emptySlice2 == nil) // false
 
     fmt.Printf("With that trying to slice or add a value to this emptySlice will panic with a runtime error:\n\n")
 	fmt.Printf("emptySlice[0] = 0 -> index out of range.\n")
